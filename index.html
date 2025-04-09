@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player de Rádio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #222;
+            color: white;
+        }
+        .player-container {
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            background: #ff5722;
+            color: white;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #e64a19;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rádio Web Litoral</h1>
+    <div class="player-container">
+        <audio id="radio" src="https://sv16.hdradios.net:8088/stream"></audio>
+        <button onclick="toggleRadio()">Play</button>
+        <p id="now-playing">Carregando...</p>
+    </div>
+
+    <script>
+        const radio = document.getElementById("radio");
+        const button = document.querySelector("button");
+        const nowPlaying = document.getElementById("now-playing");
+
+        function toggleRadio() {
+            if (radio.paused) {
+                radio.play();
+                button.textContent = "Pause";
+            } else {
+                radio.pause();
+                button.textContent = "Play";
+            }
+        }
+
+        // Buscar a música atual
+        async function fetchNowPlaying() {
+            try {
+                const response = await fetch("https://player.hdradios.net/musica-atual/8088");
+                const data = await response.json();
+                nowPlaying.textContent = data.title || "Música desconhecida";
+            } catch (error) {
+                nowPlaying.textContent = "Erro ao buscar música";
+            }
+        }
+        setInterval(fetchNowPlaying, 5000);
+    </script>
+</body>
+</html>
