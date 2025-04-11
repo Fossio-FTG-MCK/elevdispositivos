@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Técnico - ELEV Dispositivos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="blog-tecnico.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="/6817BD16-56C8-4D99-9BB1-DADCC1C0CE60.png" alt="ELEV Dispositivos" width="260" height="50">
+                </a>
+            </div>
+            <nav>
+                <ul class="desktop-menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="dispositivos.html">Dispositivos</a></li>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="trabalhe-conosco.html">Trabalhe Conosco</a></li>
+                    <li><a href="blog-tecnico.html" class="active">Blog Técnico</a></li>
+                </ul>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="dispositivos.html">Dispositivos</a></li>
+                <li><a href="sobre.html">Sobre Nós</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="trabalhe-conosco.html">Trabalhe Conosco</a></li>
+                <li><a href="blog-tecnico.html" class="active">Blog Técnico</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Blog Técnico</h1>
+                <p>Conhecimento especializado em manutenção e segurança para o agronegócio</p>
+            </div>
+        </section>
+
+        <section class="blog-intro">
+            <div class="container">
+                <p class="intro-text">Bem-vindo ao Blog Técnico da ELEV Dispositivos. Aqui você encontra conteúdo especializado sobre manutenção de máquinas agrícolas, procedimentos de segurança e dicas técnicas que podem aumentar a produtividade da sua operação.</p>
+            </div>
+        </section>
+
+        <section class="blog-filter">
+            <div class="container">
+                <div class="filter-wrapper">
+                    <div class="filter-categories">
+                        <h3>Categorias</h3>
+                        <div class="category-buttons">
+                            <button class="category-btn active" data-category="todos">Todos</button>
+                            <button class="category-btn" data-category="manutencao">Manutenção</button>
+                            <button class="category-btn" data-category="seguranca">Segurança</button>
+                            <button class="category-btn" data-category="tecnologia">Tecnologia</button>
+                            <button class="category-btn" data-category="producao">Produtividade</button>
+                        </div>
+                    </div>
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Buscar artigos...">
+                        <button id="searchButton"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-post">
+            <div class="container">
+                <div class="featured-post-wrapper">
+                    <div class="featured-post-image">
+                        <svg width="100%" height="300" viewBox="0 0 600 300">
+                            <rect width="600" height="300" fill="#F5F5F5" rx="8" />
+                            <rect x="150" y="70" width="300" height="160" fill="#2E7D32" opacity="0.8" rx="5" />
+                            <circle cx="300" cy="150" r="70" fill="#FFD700" opacity="0.6" />
+                            <rect x="270" y="130" width="60" height="10" fill="#FFFFFF" />
+                            <rect x="270" y="150" width="60" height="10" fill="#FFFFFF" />
+                            <rect x="270" y="170" width="60" height="10" fill="#FFFFFF" />
+                            <text x="300" y="250" fill="#1C1C1C" font-family="Montserrat" font-weight="600" font-size="16" text-anchor="middle">MANUTENÇÃO PREVENTIVA EM TRATORES</text>
+                        </svg>
+                    </div>
+                    <div class="featured-post-content">
+                        <span class="post-category">Manutenção</span>
+                        <h2>Manutenção preventiva em tratores: 5 procedimentos essenciais para prolongar a vida útil</h2>
+                        <p class="post-meta">
+                            <span class="post-date">12 de Julho de 2023</span> | 
+                            <span class="post-author">Por Eng. Roberto Silva</span>
+                        </p>
+                        <p class="post-excerpt">A manutenção preventiva de tratores é fundamental para garantir a longevidade do equipamento e evitar paradas não programadas durante períodos críticos de operação. Neste artigo, apresentamos cinco procedimentos essenciais que todo proprietário de trator deve realizar regularmente...</p>
+                        <a href="blog-post.html" class="btn btn-primary">Ler artigo completo</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog-posts">
+            <div class="container">
+                <h2>Artigos Recentes</h2>
+                <div class="post-grid">
+                    <!-- Post 1 -->
+                    <div class="post-card" data-category="seguranca">
+                        <div class="post-image">
+                            <svg width="100%" height="180" viewBox="0 0 300 180">
+                                <rect width="300" height="180" fill="#F5F5F5" rx="8" />
+                                <rect x="50" y="50" width="200" height="80" fill="#2E7D32" opacity="0.7" rx="5" />
+                                <path d="M130,60 L170,60 L170,120 L130,120 Z" fill="#FFD700" />
+                                <path d="M110,80 L190,80 M110,100 L190,100" stroke="#FFFFFF" stroke-width="3" />
+                            </svg>
+                        </div>
+                        <div class="post-content">
+                            <span class="post-category">Segurança</span>
+                            <h3>Procedimentos de segurança essenciais para elevação de maquinários pesados</h3>
+                            <p class="post-meta">
+                                <span class="post-date">5 de Julho de 2023</span>
+                            </p>
+                            <p class="post-excerpt">A segurança durante procedimentos de elevação de máquinas agrícolas é fundamental para prevenir acidentes e garantir a integridade dos equipamentos...</p>
+                            <a href="#" class="read-more">Ler mais</a>
+                        </div>
+                    </div>
+
+                    <!-- Post 2 -->
+                    <div class="post-card" data-category="tecnologia">
+                        <div class="post-image">
+                            <svg width="100%" height="180" viewBox="0 0 300 180">
+                                <rect width="300" height="180" fill="#F5F5F5" rx="8" />
+                                <rect x="75" y="40" width="150" height="100" fill="#1C1C1C" opacity="0.8" rx="5" />
+                                <circle cx="150" cy="70" r="20" fill="#AEEA00" opacity="0.7" />
+                                <path d="M120,100 L180,100 M120,120 L180,120" stroke="#FFFFFF" stroke-width="2" />
+                            </svg>
+                        </div>
+                        <div class="post-content">
+                            <span class="post-category">Tecnologia</span>
+                            <h3>Inovações tecnológicas em sistemas de elevação para o agronegócio</h3>
+                            <p class="post-meta">
+                                <span class="post-date">28 de Junho de 2023</span>
+                            </p>
+                            <p class="post-excerpt">As mais recentes inovações em sistemas de Spyder estão transformando a forma como as manutenções são realizadas no campo...</p>
+                            <a href="#" class="read-more">Ler mais</a>
+                        </div>
+                    </div>
+
+                    <!-- Post 3 -->
+                    <div class="post-card" data-category="manutencao">
+                        <div class="post-image">
+                            <svg width="100%" height="180" viewBox="0 0 300 180">
+                                <rect width="300" height="180" fill="#F5F5F5" rx="8" />
+                                <rect x="60" y="60" width="180" height="60" fill="#FFD700" opacity="0.7" rx="5" />
+                                <circle cx="100" cy="90" r="20" fill="#2E7D32" />
+                                <circle cx="150" cy="90" r="20" fill="#2E7D32" />
+                                <circle cx="200" cy="90" r="20" fill="#2E7D32" />
+                            </svg>
+                        </div>
+                        <div class="post-content">
+                            <span class="post-category">Manutenção</span>
+                            <h3>Guia completo de manutenção de colhedeiras para a safra de grãos</h3>
+                            <p class="post-meta">
+                                <span class="post-date">15 de Junho de 2023</span>
+                            </p>
+                            <p class="post-excerpt">Preparar adequadamente as colhedeiras antes da safra é fundamental para evitar quebras e garantir a eficiência da colheita...</p>
+                            <a href="#" class="read-more">Ler mais</a>
+                        </div>
+                    </div>
+
+                    <!-- Post 4 -->
+                    <div class="post-card" data-category="producao">
+                        <div class="post-image">
+                            <svg width="100%" height="180" viewBox="0 0 300 180">
+                                <rect width="300" height="180" fill="#F5F5F5" rx="8" />
+                                <path d="M50,130 L250,130" stroke="#2E7D32" stroke-width="2" />
+                                <rect x="70" y="80" width="30" height="50" fill="#2E7D32" />
+                                <rect x="110" y="60" width="30" height="70" fill="#2E7D32" />
+                                <rect x="150" y="40" width="30" height="90" fill="#2E7D32" />
+                                <rect x="190" y="90" width="30" height="40" fill="#2E7D32" />
+                                <path d="M70,60 L220,60" stroke="#FFD700" stroke-width="3" />
+                            </svg>
+                        </div>
+                        <div class="post-content">
+                            <span class="post-category">Produtividade</span>
+                            <h3>Como a manutenção adequada impacta diretamente na produtividade da lavoura</h3>
+                            <p class="post-meta">
+                                <span class="post-date">8 de Junho de 2023</span>
+                            </p>
+                            <p class="post-excerpt">Estudos demonstram que operações com planos de manutenção bem estruturados conseguem aumentar a produtividade em até 30%...</p>
+                            <a href="#" class="read-more">Ler mais</a>
+                        </div>
+                    </div>
+
+                    <!-- Post 5 -->
+                    <div class="post-card" data-category="seguranca">
+                        <div class="post-image">
+                            <svg width="100%" height="180" viewBox="0 0 300 180">
+                                <rect width="300" height="180" fill="#F5F5F5" rx="8" />
+                                <polygon points="150,40 190,100 150,160 110,100" fill="#FFD700" opacity="0.6" />
+                                <text x="150" y="105" fill="#1C1C1C" font-family="Montserrat" font-weight="700" font-size="20" text-anchor="middle">!</text>
+                            </svg>
+                        </div>
+                        <div class="post-content">
+                            <span class="post-category">Segurança</span>
+                            <h3>NR-31: O que mudou nas normas de segurança para operação de máquinas agrícolas</h3>
+                            <p class="post-meta">
+                                <span class="post-date">1 de Junho de 2023</span>
+                            </p>
+                            <p class="post-excerpt">A atualização da Norma Regulamentadora 31 trouxe importantes mudanças para a operação segura de maquinário agrícola...</p>
+                            <a href="#" class="read-more">Ler mais</a>
+                        </div>
+                    </div>
+
+                    <!-- Post 6 -->
+                    <div class="post-card" data-category="tecnologia">
+                        <div class="post-image">
+                            <svg width="100%" height="180" viewBox="0 0 300 180">
+                                <rect width="300" height="180" fill="#F5F5F5" rx="8" />
+                                <rect x="70" y="40" width="160" height="100" fill="#1C1C1C" opacity="0.7" rx="5" />
+                                <circle cx="150" cy="70" r="20" fill="#AEEA00" />
+                                <path d="M120,100 L180,100 M120,120 L180,120" stroke="#FFFFFF" stroke-width="2" />
+                            </svg>
+                        </div>
+                        <div class="post-content">
+                            <span class="post-category">Tecnologia</span>
+                            <h3>Sistema TRAVA JACARÉ: Como funciona e quais suas vantagens</h3>
+                            <p class="post-meta">
+                                <span class="post-date">25 de Maio de 2023</span>
+                            </p>
+                            <p class="post-excerpt">Conheça a tecnologia exclusiva da ELEV que revolucionou a segurança nos procedimentos de elevação de máquinas agrícolas...</p>
+                            <a href="#" class="read-more">Ler mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination">
+                    <a href="#" class="pagination-link active">1</a>
+                    <a href="#" class="pagination-link">2</a>
+                    <a href="#" class="pagination-link">3</a>
+                    <span class="pagination-ellipsis">...</span>
+                    <a href="#" class="pagination-link">8</a>
+                    <a href="#" class="pagination-next">Próxima <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter">
+            <div class="container">
+                <div class="newsletter-wrapper">
+                    <div class="newsletter-content">
+                        <h2>Inscreva-se na nossa newsletter</h2>
+                        <p>Receba conteúdo técnico especializado, dicas de manutenção e novidades do setor diretamente no seu e-mail.</p>
+                    </div>
+                    <form class="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="Seu melhor e-mail" required>
+                            <button type="submit" class="btn btn-secondary">Inscrever-se</button>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="privacy" required>
+                            <label for="privacy">Concordo em receber e-mails da ELEV Dispositivos</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Tem alguma dúvida técnica?</h2>
+                <p>Nossa equipe de engenheiros está à disposição para auxiliar nas suas necessidades</p>
+                <div class="cta-buttons">
+                    <a href="contato.html" class="btn btn-primary">Fale com um especialista</a>
+                    <a href="#" class="btn btn-secondary">Baixar catálogo técnico</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg width="100" height="40" viewBox="0 0 100 40">
+                        <rect width="40" height="25" fill="#2E7D32" rx="4" />
+                        <text x="48" y="20" fill="#fff" font-family="Montserrat" font-weight="700" font-size="18">ELEV</text>
+                    </svg>
+                    <p>Soluções de elevação com segurança e tecnologia</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Produtos</h3>
+                        <ul>
+                            <li><a href="dispositivos.html#tratores">Série Tratores</a></li>
+                            <li><a href="dispositivos.html#colhedeiras">Série Colhedeiras</a></li>
+                            <li><a href="dispositivos.html#pulverizadores">Série Pulverizadores</a></li>
+                            <li><a href="dispositivos.html#veiculos">Série Veículos</a></li>
+                            <li><a href="dispositivos.html#industria">Série Indústria</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Empresa</h3>
+                        <ul>
+                            <li><a href="sobre.html">Sobre Nós</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                            <li><a href="trabalhe-conosco.html">Trabalhe Conosco</a></li>
+                            <li><a href="blog-tecnico.html">Blog Técnico</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Contato</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-phone"></i> (XX) XXXX-XXXX</li>
+                            <li><i class="fas fa-envelope"></i> contato@elevdispositivos.com.br</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Rua Exemplo, 123 - Cidade/UF</li>
+                        </ul>
+                        <div class="social-links">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 ELEV Dispositivos. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script src="blog-tecnico.js"></script>
+</body>
+</html>
