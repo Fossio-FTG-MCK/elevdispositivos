@@ -38,6 +38,13 @@
                     <div class="filter-section">
                         <h3>Filtros</h3>
                         <div class="filter-group">
+                            <label for="search">Buscar</label>
+                            <div class="search-container">
+                                <input type="text" id="search" placeholder="Buscar equipamento...">
+                                <button id="search-btn" class="btn-search"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                        <div class="filter-group">
                             <label for="categoria">Categoria</label>
                             <select id="categoria">
                                 <option value="">Todas</option>
@@ -50,13 +57,6 @@
                                 <option value="">Todas</option>
                                 <!-- Preenchido via JavaScript -->
                             </select>
-                        </div>
-                        <div class="filter-group">
-                            <label for="search">Buscar</label>
-                            <div class="search-container">
-                                <input type="text" id="search" placeholder="Buscar equipamento...">
-                                <button id="search-btn" class="btn-search"><i class="fas fa-search"></i></button>
-                            </div>
                         </div>
                         <div class="filter-group">
                             <label for="marca">Marca</label>
