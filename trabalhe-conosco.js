@@ -45,13 +45,39 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Verifica se há posições e exibe a mensagem se não houver
+    const positionsList = document.querySelector('.positions-list');
+    const noPositionsMessage = document.getElementById('noPositionsMessage');
+    const openPositionsSection = document.querySelector('.open-positions');
+
+    // Verifique se a lista de posições está vazia
+    if (positionsList) {
+        if (positionsList.children.length === 0) {
+            if (noPositionsMessage) {
+                noPositionsMessage.style.display = 'block';
+            }
+            // Oculta a seção de vagas
+            if (openPositionsSection) {
+                openPositionsSection.style.display = 'none';
+            }
+        } else {
+            if (noPositionsMessage) {
+                noPositionsMessage.style.display = 'none';
+            }
+            // Mostra a seção de vagas
+            if (openPositionsSection) {
+                openPositionsSection.style.display = 'block';
+            }
+        }
+    }
+    
     // Form field validation
     const formInputs = document.querySelectorAll('.application-form input, .application-form textarea, .application-form select');
     
     formInputs.forEach(input => {
         if (input.type !== 'checkbox') {
             input.addEventListener('blur', function() {
-                if (this.hasAttribute')('required') && !this.value.trim()) {
+                if (this.hasAttribute('required') && !this.value.trim()) {
                     this.classList.add('error');
                 } else {
                     this.classList.remove('error');
