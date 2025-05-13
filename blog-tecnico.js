@@ -1,4 +1,61 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
+    // Configuração do Supabase
+    const supabaseUrl = 'https://pvlobuvyblzcielydbum.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2bG9idXZ5Ymx6Y2llbHlkYnVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU5NTExMjcsImV4cCI6MjA2MTUyNzEyN30.o4VBtpt5wHLj7j-RpcHGYgh6eogCpMnp9jDJM4yecMw';
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    // Função para buscar posts
+    async function fetchPosts(page = 1, limit = 6) {
+        const { data, error } = await supabase
+            .from('view_posts_blog')
+            .select('*')
+            .order('publicado_em', { ascending: false })
+            .range((page - 1) * limit, page * limit - 1);
+
+        if (error) {
+            console.error('Erro ao buscar posts:', error);
+            return [];
+        }
+        return data;
+    }
+
+    // Função para renderizar posts
+    function renderPosts(posts) {
+        const postGrid = document.querySelector('.post-grid');
+        postGrid.innerHTML = ''; // Limpa posts existentes
+
+        posts.forEach(post => {
+            const postCard = document.createElement('div');
+            postCard.className = 'post-card';
+            postCard.setAttribute('data-category', post.categoria);
+            const imgUrl = post.url_img || '/midias/elev-fallback-blog.png'; // Imagem de fallback
+
+            postCard.innerHTML = `
+                <div class="post-image">
+                    <img src="${imgUrl}" alt="${post.titulo}" style="width:100%; height:180px; object-fit:cover;">
+                </div>
+                <div class="post-content">
+                    <span class="post-category">${post.categoria}</span>
+                    <h3>${post.titulo}</h3>
+                    <p class="post-meta">
+                        <span class="post-date">${new Date(post.publicado_em).toLocaleDateString()}</span>
+                    </p>
+                    <p class="post-excerpt">${post.conteudo.substring(0, 100)}...</p>
+                    <a href="blog-post.html?slug=${post.slug}" class="read-more">Ler mais</a>
+                </div>
+            `;
+            postGrid.appendChild(postCard);
+        });
+    }
+
+    // Função para inicializar
+    async function init() {
+        const posts = await fetchPosts();
+        renderPosts(posts);
+    }
+
+    init();
+
     // Category filtering
     const categoryButtons = document.querySelectorAll('.category-btn');
     const postCards = document.querySelectorAll('.post-card');
