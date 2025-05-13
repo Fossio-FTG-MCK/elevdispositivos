@@ -19,6 +19,23 @@ document.addEventListener('DOMContentLoaded', async function() {
         return data;
     }
 
+    // Função para buscar o último post da categoria "featured-post"
+    async function fetchFeaturedPost() {
+        const { data, error } = await supabase
+            .from('view_posts_blog')
+            .select('*')
+            .eq('categoria', 'featured-post')
+            .order('publicado_em', { ascending: false })
+            .limit(1)
+            .single(); // Pega apenas um post
+
+        if (error) {
+            console.error('Erro ao buscar post em destaque:', error);
+            return null;
+        }
+        return data;
+    }
+
     // Função para renderizar posts
     function renderPosts(posts) {
         const postGrid = document.querySelector('.post-grid');
@@ -48,10 +65,40 @@ document.addEventListener('DOMContentLoaded', async function() {
         });
     }
 
+    // Função para renderizar o post em destaque
+    function renderFeaturedPost(post) {
+        const featuredPostWrapper = document.querySelector('.featured-post-wrapper');
+        if (!post) {
+            console.log('Nenhum post em destaque encontrado.');
+            return;
+        }
+
+        const imgUrl = post.url_img || '/midias/elev-fallback-blog.png'; // Imagem de fallback
+        featuredPostWrapper.innerHTML = `
+            <div class="featured-post-image">
+                <img src="${imgUrl}" alt="${post.titulo}" style="width:100%; height:300px; object-fit:cover;">
+            </div>
+            <div class="featured-post-content">
+                <span class="post-category">${post.categoria}</span>
+                <h2>${post.titulo}</h2>
+                <p class="post-meta">
+                    <span class="post-date">${new Date(post.publicado_em).toLocaleDateString()}</span> | 
+                    <span class="post-author">Por ${post.autor}</span>
+                </p>
+                <p class="post-excerpt">${post.conteudo.substring(0, 100)}...</p>
+                <a href="blog-post.html?slug=${post.slug}" class="btn btn-primary">Ler artigo completo</a>
+            </div>
+        `;
+    }
+
     // Função para inicializar
     async function init() {
         const posts = await fetchPosts();
         renderPosts(posts);
+
+        const featuredPost = await fetchFeaturedPost();
+        console.log('Post em destaque:', featuredPost); // Log para verificar os dados
+        renderFeaturedPost(featuredPost);
     }
 
     init();
