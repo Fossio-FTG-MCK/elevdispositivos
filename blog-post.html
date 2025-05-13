@@ -77,13 +77,8 @@
                     </div>
                 </div>
                 
-                <div class="post-featured-image" id="post-image">
-                    <!-- A imagem será inserida aqui pelo JavaScript -->
-                </div>
-                
-                <div class="post-content" id="post-content">
-                    <!-- O conteúdo do post será inserido aqui pelo JavaScript -->
-                </div>
+                <div class="post-featured-image" id="post-image"></div>
+                <div class="post-content" id="post-content"></div>
             </div>
         </article>
         
@@ -97,6 +92,9 @@
                 </div>
             </div>
         </section>
+
+        <div class="featured-post-wrapper"></div>
+        <div class="post-grid"></div>
     </main>
 
     <footer>
@@ -148,51 +146,55 @@
         </div>
     </footer>
 
-    <script src="scripts.js"></script>
-    <script src="blog-tecnico.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', async function() {
-        const params = new URLSearchParams(window.location.search);
-        const slug = params.get('slug'); // Obtém a slug da URL
+        // Configuração do Supabase
+        const supabaseUrl = 'https://pvlobuvyblzcielydbum.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2bG9idXZ5Ymx6Y2llbHlkYnVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU5NTExMjcsImV4cCI6MjA2MTUyNzEyN30.o4VBtpt5wHLj7j-RpcHGYgh6eogCpMnp9jDJM4yecMw'; // Mantenha sua chave aqui
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-        if (!slug) {
-            console.error('Slug não encontrado na URL.');
-            return;
-        }
+        document.addEventListener('DOMContentLoaded', async function() {
+            const params = new URLSearchParams(window.location.search);
+            const slug = params.get('slug'); // Obtém a slug da URL
 
-        const { data, error } = await supabase
-            .from('posts_blog')
-            .select('*')
-            .eq('slug', slug)
-            .single(); // Busca o post com a slug correspondente
+            if (!slug) {
+                console.error('Slug não encontrado na URL.');
+                return;
+            }
 
-        if (error) {
-            console.error('Erro ao buscar o post:', error);
-            return;
-        }
+            // Função para buscar o post pela slug
+            async function fetchPostBySlug(slug) {
+                const { data, error } = await supabase
+                    .from('view_posts_blog')
+                    .select('*')
+                    .eq('slug', slug)
+                    .single(); // Busca um único post
 
-        // Preenche os elementos do post
-        const titleElement = document.getElementById('post-title');
-        const categoryElement = document.getElementById('post-category');
-        const dateElement = document.getElementById('post-date');
-        const authorElement = document.getElementById('post-author');
-        const imageElement = document.getElementById('post-image');
-        const contentElement = document.getElementById('post-content');
+                if (error) {
+                    console.error('Erro ao buscar post:', error);
+                    return null;
+                }
+                return data;
+            }
 
-        if (titleElement && categoryElement && dateElement && authorElement && imageElement && contentElement) {
-            titleElement.innerText = data.titulo || 'Título não disponível';
-            categoryElement.innerText = data.categoria || 'Categoria não disponível';
-            dateElement.innerText = new Date(data.publicado_em).toLocaleDateString('pt-BR') || 'Data não disponível';
-            authorElement.innerText = data.autor_id || 'Autor não disponível';
+            // Renderiza o post
+            async function renderPost() {
+                const post = await fetchPostBySlug(slug);
+                if (!post) {
+                    document.getElementById('post-content').innerHTML = '<p>Post não encontrado.</p>';
+                    return;
+                }
 
-            // Lógica para a imagem
-            const imageUrl = data.url_img ? data.url_img : 'midias/elev-fallback-blog.png';
-            imageElement.innerHTML = `<img src="${imageUrl}" alt="${data.titulo}">`;
-            contentElement.innerHTML = data.conteudo || 'Conteúdo não disponível';
-        } else {
-            console.error('Um ou mais elementos não foram encontrados no DOM.');
-        }
-    });
+                // Preenche os elementos do post
+                document.getElementById('post-title').innerText = post.titulo || 'Título não disponível';
+                document.getElementById('post-category').innerText = post.categoria || 'Categoria não disponível';
+                document.getElementById('post-date').innerText = new Date(post.publicado_em).toLocaleDateString('pt-BR') || 'Data não disponível';
+                document.getElementById('post-author').innerText = post.autor || 'Autor não disponível';
+                document.getElementById('post-image').innerHTML = `<img src="${post.url_img || '/midias/elev-fallback-blog.png'}" alt="${post.titulo}">`;
+                document.getElementById('post-content').innerHTML = post.conteudo || 'Conteúdo não disponível';
+            }
+
+            renderPost();
+        });
     </script>
 </body>
 </html>
