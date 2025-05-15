@@ -197,3 +197,13 @@
     }
 }
 
+nav ul li a.active {
+    color: #2E7D32; /* Cor do texto quando ativo */
+    font-weight: bold; /* Deixar o texto em negrito */
+}
+
+nav ul li a.active:hover {
+    background-color: var(--primary); /* Cor de fundo quando ativo e em hover */
+    color: var(--white); /* Cor do texto quando ativo e em hover */
+}
+
