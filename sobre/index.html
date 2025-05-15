@@ -248,5 +248,15 @@
     </footer>
 
     <script src="/scripts.js"></script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const currentLocation = window.location.pathname; // Obtém o caminho atual da URL
+    const menuItems = document.querySelectorAll('nav ul li a'); // Seleciona todos os links do menu
+
+    menuItems.forEach(item => {
+        if (item.getAttribute('href') === currentLocation) {
+            item.classList.add('active'); // Adiciona a classe 'active' ao link correspondente
+        }
+    });
+});
 </body>
 </html>
