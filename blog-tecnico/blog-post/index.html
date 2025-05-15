@@ -22,7 +22,7 @@
     <!-- Site desenvolvido por FOSSIO FORCE - https://fossioforce.com.br -->
     <!-- Desenvolvedor - Fossio -->
 
-    <title>Blog Técnico - ELEV Dispositivos</title>
+    <title>Manutenção preventiva em tratores: 5 procedimentos essenciais - ELEV Dispositivos</title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="/blog-tecnico/blog-tecnico.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,6 +31,14 @@
     <link rel="icon" href="/midias/favicon-120x120.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <style>
+        .post-featured-image img {
+            width: 100%; /* Largura total do contêiner */
+            height: auto; /* Altura automática para manter a proporção */
+            max-height: 675px; /* Limite a altura máxima */
+            object-fit: cover; /* Cobre o contêiner sem distorcer a imagem */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -65,96 +73,35 @@
     </header>
 
     <main>
-        <section class="page-header">
+        <article class="blog-post">
             <div class="container">
-                <h1>Blog Técnico</h1>
-                <p>Conhecimento especializado em manutenção e segurança para o agronegócio</p>
-            </div>
-        </section>
-
-        <section class="blog-intro">
-            <div class="container">
-                <p class="intro-text">Bem-vindo ao Blog Técnico da ELEV Dispositivos. Aqui você encontra conteúdo especializado sobre manutenção de máquinas agrícolas, procedimentos de segurança e dicas técnicas que podem aumentar a produtividade da sua operação.</p>
-            </div>
-        </section>
-
-        <section class="blog-filter">
-            <div class="container">
-                <div class="filter-wrapper">
-                    <div class="filter-categories">
-                        <h3>Categorias</h3>
-                        <div class="category-buttons">
-                            <button class="category-btn active" data-category="todos">Todos</button>
-                            <button class="category-btn" data-category="manutencao">Manutenção</button>
-                            <button class="category-btn" data-category="seguranca">Segurança</button>
-                            <button class="category-btn" data-category="tecnologia">Tecnologia</button>
-                            <button class="category-btn" data-category="producao">Produtividade</button>
-                        </div>
-                    </div>
-                    <div class="search-box">
-                        <input type="text" id="searchInput" placeholder="Buscar artigos...">
-                        <button id="searchButton"><i class="fas fa-search"></i></button>
+                <div class="post-header">
+                    <span class="post-category" id="post-category"></span>
+                    <h1 id="post-title"></h1>
+                    <div class="post-meta">
+                        <span class="post-date" id="post-date"></span> | 
+                        <span class="post-author" id="post-author"></span>
                     </div>
                 </div>
+                
+                <div class="post-featured-image" id="post-image"></div>
+                <div class="post-content" id="post-content"></div>
             </div>
-        </section>
-
-        <section class="featured-post">
-            <div class="container">
-                <div class="featured-post-wrapper">
-                    <!-- O post em destaque será renderizado aqui pelo JavaScript -->
-                </div>
-            </div>
-        </section>
-
-        <section class="blog-posts">
-            <div class="container">
-                <h2>Artigos Recentes</h2>
-                <div class="post-grid">
-                    <!-- Os posts serão renderizados aqui pelo JavaScript -->
-                </div>
-                <div class="pagination">
-                    <a href="#" class="pagination-link active">1</a>
-                    <a href="#" class="pagination-link">2</a>
-                    <a href="#" class="pagination-link">3</a>
-                    <span class="pagination-ellipsis">...</span>
-                    <a href="#" class="pagination-link">8</a>
-                    <a href="#" class="pagination-next">Próxima <i class="fas fa-chevron-right"></i></a>
-                </div>
-            </div>
-        </section>
-
-        <section class="newsletter">
-            <div class="container">
-                <div class="newsletter-wrapper">
-                    <div class="newsletter-content">
-                        <h2>Inscreva-se na nossa newsletter</h2>
-                        <p>Receba conteúdo técnico especializado, dicas de manutenção e novidades do setor diretamente no seu e-mail.</p>
-                    </div>
-                    <form class="newsletter-form">
-                        <div class="form-group">
-                            <input type="email" placeholder="Seu melhor e-mail" required>
-                            <button type="submit" class="btn btn-secondary">Inscrever-se</button>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" id="privacy" required>
-                            <label for="privacy">Concordo em receber e-mails da ELEV Dispositivos</label>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-
+        </article>
+        
         <section class="cta">
             <div class="container">
-                <h2>Tem alguma dúvida técnica?</h2>
-                <p>Nossa equipe de engenheiros está à disposição para auxiliar nas suas necessidades</p>
+                <h2>Precisa de dispositivos de elevação seguros para a manutenção do seu trator?</h2>
+                <p>Conheça nossa linha de produtos com tecnologia exclusiva TRAVA JACARÉ®</p>
                 <div class="cta-buttons">
-                    <a href="https://wa.me/5551992399960" class="btn btn-primary" target="_blank">Fale com um especialista</a>
-                    <a href="/docs/catalogo.pdf" class="btn btn-secondary" download>Baixar catálogo completo</a>
+                    <a href="/dispositivos/" class="btn btn-primary">Ver dispositivos para tratores</a>
+                    <a href="/contato/" class="btn btn-secondary">Fale com um especialista</a>
                 </div>
             </div>
         </section>
+
+        <div class="featured-post-wrapper"></div>
+        <div class="post-grid"></div>
     </main>
 
     <footer>
@@ -205,8 +152,104 @@
         </div>
     </footer>
 
-    <script src="/scripts.js"></script>
-    <script src="/blog-tecnico/blog-tecnico.js"></script>
+    <script>
+        // Configuração do Supabase
+        const supabaseUrl = 'https://pvlobuvyblzcielydbum.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2bG9idXZ5Ymx6Y2llbHlkYnVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU5NTExMjcsImV4cCI6MjA2MTUyNzEyN30.o4VBtpt5wHLj7j-RpcHGYgh6eogCpMnp9jDJM4yecMw'; // Mantenha sua chave aqui
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
+        document.addEventListener('DOMContentLoaded', async function() {
+            const params = new URLSearchParams(window.location.search);
+            const slug = params.get('slug'); // Obtém a slug da URL
+
+            if (!slug) {
+                console.error('Slug não encontrado na URL.');
+                return;
+            }
+
+            // Função para buscar o post pela slug
+            async function fetchPostBySlug(slug) {
+                const { data, error } = await supabase
+                    .from('view_posts_blog')
+                    .select('*')
+                    .eq('slug', slug)
+                    .single(); // Busca um único post
+
+                if (error) {
+                    console.error('Erro ao buscar post:', error);
+                    return null;
+                }
+                return data;
+            }
+
+            // Renderiza o post
+            async function renderPost() {
+                const post = await fetchPostBySlug(slug);
+                if (!post) {
+                    document.getElementById('post-content').innerHTML = '<p>Post não encontrado.</p>';
+                    return;
+                }
+
+                // Preenche os elementos do post
+                document.getElementById('post-title').innerText = post.titulo || 'Título não disponível';
+                document.getElementById('post-category').innerText = post.categoria || 'Categoria não disponível';
+                document.getElementById('post-date').innerText = new Date(post.publicado_em).toLocaleDateString('pt-BR') || 'Data não disponível';
+                document.getElementById('post-author').innerText = post.autor || 'Autor não disponível';
+                document.getElementById('post-image').innerHTML = `<img src="${post.url_img || '/midias/elev-fallback-blog.png'}" alt="${post.titulo}">`;
+                
+                // Use innerHTML para manter a formatação HTML
+                const postContent = post.conteudo || 'Conteúdo não disponível';
+                
+                // Verificando se o conteúdo já é HTML válido
+                if (postContent.includes('<') && postContent.includes('>')) {
+                    // Já parece conter tags HTML, então inserimos diretamente
+                    document.getElementById('post-content').innerHTML = postContent;
+                } else {
+                    // Se não for HTML, convertemos quebras de linha em tags <p> e <br>
+                    const formattedContent = postContent
+                        .split(/\n{2,}/) // Divide em parágrafos com base em quebras de linha duplas
+                        .map(paragraph => paragraph.trim())
+                        .filter(paragraph => paragraph)
+                        .map(paragraph => `<p>${paragraph.replace(/\n/g, '<br>')}</p>`) // Substitui quebras de linha simples por <br>
+                        .join('');
+                    
+                    document.getElementById('post-content').innerHTML = formattedContent;
+                }
+            }
+
+            renderPost();
+        });
+
+        // Função para renderizar posts
+        function renderPosts(posts) {
+            const postGrid = document.querySelector('.post-grid');
+            postGrid.innerHTML = ''; // Limpa posts existentes
+
+            posts.forEach(post => {
+                const postCard = document.createElement('div');
+                postCard.className = 'post-card';
+                postCard.setAttribute('data-category', post.categoria);
+                const imgUrl = post.url_img || '../midias/elev-fallback-blog.png'; // Imagem de fallback
+
+                postCard.innerHTML = `
+                    <div class="post-image">
+                        <img src="${imgUrl}" alt="${post.titulo}" style="width:100%; height:180px; object-fit:cover;">
+                    </div>
+                    <div class="post-content">
+                        <span class="post-category">${post.categoria}</span>
+                        <h3>${post.titulo}</h3>
+                        <p class="post-meta">
+                            <span class="post-date">${new Date(post.publicado_em).toLocaleDateString()}</span>
+                        </p>
+                        <p class="post-excerpt">${post.conteudo.substring(0, 100)}...</p>
+                        <a href="blog-post?slug=${post.slug}" class="read-more">Ler mais</a>
+                    </div>
+                `;
+                postGrid.appendChild(postCard);
+            });
+
+            console.log('Posts renderizados:', posts);
+        }
+    </script>
 </body>
 </html>
