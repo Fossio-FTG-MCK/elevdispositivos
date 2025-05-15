@@ -1,40 +1,47 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Configuração do Supabase
+    const supabaseUrl = 'https://pvlobuvyblzcielydbum.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2bG9idXZ5Ymx6Y2llbHlkYnVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU5NTExMjcsImV4cCI6MjA2MTUyNzEyN30.o4VBtpt5wHLj7j-RpcHGYgh6eogCpMnp9jDJM4yecMw';
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
     // Form handling
     const applicationForm = document.getElementById('applicationForm');
     const formSuccess = document.getElementById('formSuccess');
     const resetFormBtn = document.getElementById('resetFormBtn');
     
     if (applicationForm) {
-        applicationForm.addEventListener('submit', function(e) {
+        applicationForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Simple validation
-            let isValid = true;
-            const requiredFields = applicationForm.querySelectorAll('[required]');
-            
-            requiredFields.forEach(field => {
-                if (!field.value.trim() && field.type !== 'file') {
-                    isValid = false;
-                    field.classList.add('error');
-                } else if (field.type === 'file' && field.files.length === 0) {
-                    isValid = false;
-                    field.classList.add('error');
-                } else {
-                    field.classList.remove('error');
-                }
-            });
-            
-            if (isValid) {
-                // Hide form and show success message
-                applicationForm.style.display = 'none';
-                formSuccess.style.display = 'block';
-                
-                // In a real implementation, you would send the form data to the server here
-                // For this example, we're just showing the success message
-                
-                // Reset form fields
-                applicationForm.reset();
+            // Captura os dados do formulário
+            const nome = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const telefone = document.getElementById('phone').value;
+            const area = document.getElementById('area').value;
+            const position = document.getElementById('position').value;
+            const message = document.getElementById('message').value;
+
+            // Formata a experiência
+            const experiencia = `Área de interesse: ${area}\nVaga específica: ${position}\nMensagem: ${message}`;
+
+            // Envio para o Supabase
+            const { data, error } = await supabase
+                .from('candidatos')
+                .insert([
+                    { nome, email, telefone, linkedin: '', cargo_desejado: position, experiencia }
+                ]);
+
+            if (error) {
+                console.error('Erro ao enviar dados:', error);
+                return;
             }
+
+            // Hide form and show success message
+            applicationForm.style.display = 'none';
+            formSuccess.style.display = 'block';
+
+            // Reset form fields
+            applicationForm.reset();
         });
     }
     
