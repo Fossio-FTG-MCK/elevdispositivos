@@ -65,7 +65,6 @@
 
     <main>
 
-
         <section class="contact-section">
             <div class="container">
                 <div class="contact-info">
@@ -138,17 +137,6 @@
                         <div class="form-group">
                             <label for="phone">Telefone *</label>
                             <input type="tel" id="phone" name="phone" required>
-                        </div>
-                        <div class="form-group full-width">
-                            <label for="interest">Interesse *</label>
-                            <select id="interest" name="interest" required>
-                                <option value="">Selecione uma opção</option>
-                                <option value="orçamento">Solicitar orçamento</option>
-                                <option value="informações">Informações técnicas</option>
-                                <option value="suporte">Suporte técnico</option>
-                                <option value="revenda">Parceria/Revenda</option>
-                                <option value="outro">Outro assunto</option>
-                            </select>
                         </div>
                         <div class="form-group full-width">
                             <label for="message">Mensagem *</label>
@@ -268,5 +256,17 @@
 
     <script src="/scripts.js"></script>
     <script src="/contato/contato.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentLocation = window.location.pathname; // Obtém o caminho atual da URL
+        const menuItems = document.querySelectorAll('nav ul li a'); // Seleciona todos os links do menu
+
+        menuItems.forEach(item => {
+            if (item.getAttribute('href') === currentLocation) {
+                item.classList.add('active'); // Adiciona a classe 'active' ao link correspondente
+            }
+        });
+    });
+    </script>
 </body>
 </html>
