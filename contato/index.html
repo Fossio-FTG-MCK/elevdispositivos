@@ -132,10 +132,6 @@
                             <input type="text" id="company" name="company">
                         </div>
                         <div class="form-group">
-                            <label for="email">E-mail *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
                             <label for="phone">Telefone *</label>
                             <input type="tel" id="phone" name="phone" required>
                         </div>
@@ -255,24 +251,12 @@
         </div>
     </footer>
 
-        <div id="customAlert" class="custom-alert" style="display: none;">
-                <p id="alertMessage"></p>
-                <button id="closeAlert">Fechar</button>
-        </div>
-
     <script src="/scripts.js"></script>
     <script src="/contato/contato.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const currentLocation = window.location.pathname; // Obtém o caminho atual da URL
-        const menuItems = document.querySelectorAll('nav ul li a'); // Seleciona todos os links do menu
 
-        menuItems.forEach(item => {
-            if (item.getAttribute('href') === currentLocation) {
-                item.classList.add('active'); // Adiciona a classe 'active' ao link correspondente
-            }
-        });
-    });
-    </script>
+    <div id="customAlert" class="custom-alert" style="display: none;">
+        <p id="alertMessage"></p>
+    </div>
+
 </body>
 </html>

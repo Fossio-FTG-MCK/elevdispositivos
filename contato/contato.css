@@ -307,11 +307,10 @@
     position: fixed;
     top: 20px;
     right: 20px;
-    background-color: #f44336; /* Cor de fundo */
+    background-color: var(--primary); /* Cor de fundo */
     color: white; /* Cor do texto */
     padding: 15px;
     border-radius: 5px;
     z-index: 1000;
     transition: opacity 0.3s ease;
 }
-

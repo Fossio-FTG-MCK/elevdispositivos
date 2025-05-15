@@ -1,3 +1,8 @@
+// Configuração do Supabase
+const supabaseUrl = 'https://pvlobuvyblzcielydbum.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2bG9idXZ5Ymx6Y2llbHlkYnVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU5NTExMjcsImV4cCI6MjA2MTUyNzEyN30.o4VBtpt5wHLj7j-RpcHGYgh6eogCpMnp9jDJM4yecMw';
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
 document.addEventListener('DOMContentLoaded', function() {
     // Contact form handling
     const contactForm = document.getElementById('contactForm');
@@ -5,32 +10,34 @@ document.addEventListener('DOMContentLoaded', function() {
     const resetFormBtn = document.getElementById('resetFormBtn');
     
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Simple validation
-            let isValid = true;
-            const requiredFields = contactForm.querySelectorAll('[required]');
-            
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    isValid = false;
-                    field.classList.add('error');
-                } else {
-                    field.classList.remove('error');
-                }
-            });
-            
-            if (isValid) {
-                // Hide form and show success message
-                contactForm.style.display = 'none';
-                formSuccess.style.display = 'block';
-                
-                // In a real implementation, you would send the form data to the server here
-                // For this example, we're just showing the success message
-                
-                // Reset form fields
+            // Captura os dados do formulário
+            const nome = document.getElementById('name').value;
+            const telefone = document.getElementById('phone').value;
+            const empresa = document.getElementById('company').value;
+            const mensagem = document.getElementById('message').value;
+
+            // Concatena a mensagem com o nome da empresa
+            const mensagemFinal = `Empresa: ${empresa}\n\n${mensagem}`;
+
+            // Enviar dados para o Supabase
+            const { data, error } = await supabase
+                .from('solicitacoes') // Nome da tabela
+                .insert([
+                    { nome, telefone, mensagem: mensagemFinal }
+                ]);
+
+            if (error) {
+                console.error('Erro ao enviar dados:', error);
+                showAlert('Erro ao enviar a mensagem. Tente novamente.');
+            } else {
+                showAlert('Mensagem enviada com sucesso!');
+                // Limpar o formulário
                 contactForm.reset();
+                formSuccess.style.display = 'block'; // Exibe a mensagem de sucesso
+                contactForm.style.display = 'none'; // Esconde o formulário
             }
         });
     }
@@ -79,4 +86,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+function showAlert(message) {
+    const alertMessage = document.getElementById('alertMessage');
+    const customAlert = document.getElementById('customAlert');
+    
+    alertMessage.textContent = message;
+    customAlert.style.display = 'block';
+    
+
+    // Fechar o alerta automaticamente após 3 segundos
+    setTimeout(() => {
+        customAlert.style.display = 'none';
+    }, 3000);
+}
 
