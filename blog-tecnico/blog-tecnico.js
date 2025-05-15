@@ -1,16 +1,14 @@
 document.addEventListener('DOMContentLoaded', async function() {
-    // Configuração do Supabase
-    const supabaseUrl = 'https://pvlobuvyblzcielydbum.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2bG9idXZ5Ymx6Y2llbHlkYnVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU5NTExMjcsImV4cCI6MjA2MTUyNzEyN30.o4VBtpt5wHLj7j-RpcHGYgh6eogCpMnp9jDJM4yecMw';
+    // Inicialização do Supabase
+    const supabaseUrl = 'https://pvlobuvyblzcielydbum.supabase.co'; // Mantenha seu URL do Supabase
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2bG9idXZ5Ymx6Y2llbHlkYnVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU5NTExMjcsImV4cCI6MjA2MTUyNzEyN30.o4VBtpt5wHLj7j-RpcHGYgh6eogCpMnp9jDJM4yecMw'; // Mantenha sua chave do Supabase
     const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
     // Função para buscar posts
-    async function fetchPosts(page = 1, limit = 6) {
+    async function fetchPosts() {
         const { data, error } = await supabase
             .from('view_posts_blog')
-            .select('*')
-            .order('publicado_em', { ascending: false })
-            .range((page - 1) * limit, page * limit - 1);
+            .select('*');
 
         if (error) {
             console.error('Erro ao buscar posts:', error);
@@ -39,14 +37,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Função para renderizar posts
     function renderPosts(posts) {
         const postGrid = document.querySelector('.post-grid');
-        postGrid.innerHTML = ''; // Limpa posts existentes
-
+        postGrid.innerHTML = '';
         posts.forEach(post => {
             const postCard = document.createElement('div');
             postCard.className = 'post-card';
             postCard.setAttribute('data-category', post.categoria);
-            const imgUrl = post.url_img || '/midias/elev-fallback-blog.png'; // Imagem de fallback
-
+            const imgUrl = post.url_img || '/midias/elev-fallback-blog.png';
             postCard.innerHTML = `
                 <div class="post-image">
                     <img src="${imgUrl}" alt="${post.titulo}" style="width:100%; height:180px; object-fit:cover;">
@@ -54,17 +50,12 @@ document.addEventListener('DOMContentLoaded', async function() {
                 <div class="post-content">
                     <span class="post-category">${post.categoria}</span>
                     <h3>${post.titulo}</h3>
-                    <p class="post-meta">
-                        <span class="post-date">${new Date(post.publicado_em).toLocaleDateString()}</span>
-                    </p>
                     <p class="post-excerpt">${post.conteudo.substring(0, 100)}...</p>
                     <a href="blog-post/?slug=${post.slug}" class="read-more">Ler mais</a>
                 </div>
             `;
             postGrid.appendChild(postCard);
         });
-
-        console.log('Posts renderizados:', posts);
     }
 
     // Função para renderizar o post em destaque
@@ -93,7 +84,32 @@ document.addEventListener('DOMContentLoaded', async function() {
         `;
     }
 
-    // Função para inicializar
+    // Função para filtrar posts
+    function filterPosts(category) {
+        const postCards = document.querySelectorAll('.post-card');
+        postCards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+            if (category === 'todos' || cardCategory === category) {
+                card.style.display = 'flex'; // Exibe o cartão
+            } else {
+                card.style.display = 'none'; // Oculta o cartão
+            }
+        });
+        console.log(`Filtrando por categoria: ${category}`);
+    }
+
+    // Adicionando evento de clique para os botões de categoria
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const category = this.dataset.category.toLowerCase(); // Normaliza para minúsculas
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            filterPosts(category);
+        });
+    });
+
+    // Inicialização
     async function init() {
         const posts = await fetchPosts();
         renderPosts(posts);
@@ -103,60 +119,43 @@ document.addEventListener('DOMContentLoaded', async function() {
         renderFeaturedPost(featuredPost);
     }
 
-    // Chame a função init aqui para garantir que o DOM esteja carregado
     init();
 
-    // Category filtering
-    const categoryButtons = document.querySelectorAll('.category-btn');
-    const postCards = document.querySelectorAll('.post-card');
-    
-    function filterPosts(category) {
-        console.log('Filtrando por categoria:', category);
-        postCards.forEach(card => {
-            if (category === 'todos' || card.dataset.category === category) {
-                card.style.display = 'flex'; // Exibe o cartão
-            } else {
-                card.style.display = 'none'; // Oculta o cartão
-            }
-        });
-    }
-    
-    categoryButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            console.log('Botão de categoria clicado:', this.dataset.category);
-            categoryButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            filterPosts(this.dataset.category);
-        });
-    });
-    
     // Search functionality
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.getElementById('searchButton');
     
+    // Função para buscar posts
     function searchPosts(query) {
         console.log('Buscando por:', query);
         query = query.toLowerCase().trim();
         
         if (!query) {
             // Se a consulta estiver vazia, mostra todos os posts
+            const postCards = document.querySelectorAll('.post-card');
             postCards.forEach(card => card.style.display = 'flex');
             return;
         }
         
+        const postCards = document.querySelectorAll('.post-card');
         postCards.forEach(card => {
             const title = card.querySelector('h3').textContent.toLowerCase();
             const excerpt = card.querySelector('.post-excerpt').textContent.toLowerCase();
             const category = card.querySelector('.post-category').textContent.toLowerCase();
             
+            console.log('Título:', title, ' | Excerpt:', excerpt, ' | Categoria:', category); // Log dos dados do cartão
+            
             if (title.includes(query) || excerpt.includes(query) || category.includes(query)) {
                 card.style.display = 'flex';
+                console.log('Exibindo cartão:', card); // Log do cartão exibido
             } else {
                 card.style.display = 'none';
+                console.log('Ocultando cartão:', card); // Log do cartão ocultado
             }
         });
     }
     
+    // Adicionando evento de clique para o botão de busca
     if (searchButton && searchInput) {
         searchButton.addEventListener('click', function() {
             searchPosts(searchInput.value);
