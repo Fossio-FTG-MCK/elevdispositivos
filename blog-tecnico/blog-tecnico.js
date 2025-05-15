@@ -34,6 +34,11 @@ document.addEventListener('DOMContentLoaded', async function() {
         return data;
     }
 
+    // Função para remover acentuação e converter para minúsculas
+    function normalizeString(str) {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    }
+
     // Função para renderizar posts
     function renderPosts(posts) {
         const postGrid = document.querySelector('.post-grid');
@@ -41,7 +46,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         posts.forEach(post => {
             const postCard = document.createElement('div');
             postCard.className = 'post-card';
-            postCard.setAttribute('data-category', post.categoria);
+            postCard.setAttribute('data-category', normalizeString(post.categoria)); // Normaliza a categoria
             const imgUrl = post.url_img || '/midias/elev-fallback-blog.png';
             postCard.innerHTML = `
                 <div class="post-image">
@@ -102,7 +107,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     const categoryButtons = document.querySelectorAll('.category-btn');
     categoryButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const category = this.dataset.category.toLowerCase(); // Normaliza para minúsculas
+            const category = normalizeString(this.dataset.category); // Normaliza a categoria do botão
             categoryButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
             filterPosts(category);
