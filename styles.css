@@ -785,3 +785,36 @@ footer {
     }
 }
 
+.about-elev {
+    padding: 60px 0;
+    background-color: var(--light);
+    text-align: center;
+}
+
+.about-elev-content {
+    flex: 1;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.about-elev-image {
+    margin-top: 30px;
+}
+
+.about-elev-img {
+    width: 70%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .about-elev-content {
+        padding: 0 20px;
+    }
+}
+
+.highlight {
+    color: var(--primary); /* Cor verde primária para os textos destacados */
+}
+
