@@ -1,0 +1,238 @@
+/* Page Header */
+.page-header {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.page-header h1 {
+    margin-bottom: 15px;
+}
+
+/* About Story Section */
+.about-story {
+    padding: 80px 0;
+    background-color: var(--white);
+}
+
+.about-story .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+.about-image {
+    flex: 1;
+    text-align: center;
+}
+
+/* Mission, Vision, Values Section */
+.mission-vision-values {
+    background-color: var(--light);
+    padding: 80px 0;
+}
+
+.mission-vision-values .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.mvv-item {
+    background-color: var(--white);
+    padding: 40px 30px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.mvv-item:hover {
+    transform: translateY(-10px);
+}
+
+.mvv-icon {
+    margin-bottom: 20px;
+}
+
+.mvv-item h3 {
+    color: var(--primary);
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.mvv-item h3:after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: var(--secondary);
+    margin: 10px auto 0;
+}
+
+.mvv-item p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.mvv-item ul {
+    text-align: left;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.mvv-item ul li {
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+}
+
+/* Team Expertise Section */
+.team-expertise {
+    padding: 80px 0;
+    background-color: var(--white);
+}
+
+.expertise-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.expertise-text {
+    flex: 1;
+}
+
+.expertise-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.expertise-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+    min-width: 250px;
+}
+
+.highlight-text h4 {
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.highlight-text p {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+.expertise-image {
+    flex: 1;
+    text-align: center;
+}
+
+/* Innovation Section */
+.innovation {
+    padding: 80px 0;
+    background-color: var(--light);
+}
+
+.innovation .container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.innovation-image {
+    flex: 1;
+    text-align: center;
+}
+
+.innovation-content {
+    flex: 1;
+}
+
+.innovation-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.innovation-content .btn {
+    margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .about-story .container, 
+    .expertise-content,
+    .innovation .container {
+        flex-direction: column;
+    }
+    
+    .about-image,
+    .expertise-image,
+    .innovation-image {
+        margin-top: 40px;
+        order: 2;
+    }
+    
+    .innovation-content {
+        order: 1;
+    }
+    
+    .mvv-item {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mission-vision-values .container {
+        grid-template-columns: 1fr;
+    }
+    
+    .expertise-highlights {
+        flex-direction: column;
+    }
+    
+    .highlight-item {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-header,
+    .about-story,
+    .mission-vision-values,
+    .team-expertise,
+    .innovation {
+        padding: 60px 0;
+    }
+    
+    .about-content p, 
+    .expertise-text p,
+    .innovation-content p {
+        font-size: 1rem;
+    }
+}
+

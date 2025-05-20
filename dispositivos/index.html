@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Essencial -->
+    <meta name="description" content="A ELEV Dispositivos oferece soluções robustas para elevação de máquinas agroindustriais, logísticas, construção civil e cargas pesadas, com tecnologia e segurança.">
+    <meta name="keywords" content="elevadores industriais, equipamentos de elevação, soluções agroindustriais, logística, construção civil, cargas pesadas, guindastes, plataformas elevatórias, empilhadeiras, macacos hidráulicos, dispositivo de elevação, macacos de elevação, elevação de cargas, elevação de tratores, elevação de colheitadeiras, soluções de peso para o agro ">
+    <meta name="author" content="ELEV Dispositivos">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.elevdispositivos.com.br/">
+
+    <!-- Open Graph para redes sociais -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ELEV Dispositivos">
+    <meta property="og:title" content="ELEV Dispositivos | Soluções em Elevação para agroindústria, logística e construção civil.">
+    <meta property="og:description" content="Conheça os equipamentos da ELEV Dispositivos para elevação de máquinas e cargas pesadas nos setores agroindustrial, logístico e de construção civil.">
+    <meta property="og:image" content="https://www.elevdispositivos.com.br/midias/og-image.png">
+    <meta property="og:url" content="https://www.elevdispositivos.com.br/">
+
+    <!-- Comentário sobre o desenvolvimento -->
+    <!-- Site desenvolvido por FOSSIO FORCE - https://fossioforce.com.br -->
+    <!-- Desenvolvedor - Fossio -->
+
+    <title>Dispositivos - ELEV Dispositivos</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/dispositivos/dispositivos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/midias/favicon-120x120.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Corrigido: Usar UMD do Supabase para funcionar em <script> tradicional -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <img src="/midias/200x60 elev.png" alt="ELEV Dispositivos" width="260" height="50">
+                </a>
+            </div>
+            <nav>
+                <ul class="desktop-menu">
+                    <li><a href="/">Início</a></li>
+                    <li><a href="/dispositivos/">Dispositivos</a></li>
+                    <li><a href="/sobre/">Sobre Nós</a></li>
+                    <li><a href="/contato/">Contato</a></li>
+                </ul>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="/">Início</a></li>
+                <li><a href="/dispositivos/">Dispositivos</a></li>
+                <li><a href="/sobre/">Sobre Nós</a></li>
+                <li><a href="/contato/">Contato</a></li>
+                <li><a href="/blog-tecnico/">Blog Técnico</a></li>
+                <li><a href="/trabalhe-conosco/">Trabalhe Conosco</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+
+
+        <section class="filter-section">
+            <div class="container">
+                <div class="filter-controls">
+                    <div class="filter-categories">
+                        <div class="filter-group">
+                            <label for="categoria-select">Categoria:</label>
+                            <select id="categoria-select">
+                                <option value="todos">Todas as categorias</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filter-options">
+                        <div class="filter-group">
+                            <label for="capacidade">Capacidade:</label>
+                            <select id="capacidade">
+                                <option value="todos">Todos</option>
+                                <option value="ate-8t">Até 8 toneladas</option>
+                                <option value="ate-12t">Até 12 toneladas</option>
+                                <option value="ate-20t">Até 20 toneladas</option>
+                                <option value="acima-20t">Acima de 20 toneladas</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="products-grid">
+            <div class="container">
+                <div class="products-wrapper">
+                    <!-- Os dispositivos serão inseridos aqui via JS -->
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Precisa de um dispositivo personalizado?</h2>
+                <p>Nossa equipe técnica pode desenvolver soluções sob medida para sua aplicação específica</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/5551992399960" class="btn btn-primary" target="_blank">Fale com um especialista</a>
+                    <a href="/docs/catalogo.pdf" class="btn btn-secondary" download>Baixar catálogo completo</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="/midias/JAF.png" alt="JAF Indústria e comércio LTDA" width="151" height="60" />
+                    <p>Soluções de elevação com segurança e tecnologia</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Produtos</h3>
+                        <ul>
+                            <li><a href="/dispositivos/">Série Tratores</a></li>
+                            <li><a href="/dispositivos/">Série Colhedeiras</a></li>
+                            <li><a href="/dispositivos/">Série Pulverizadores</a></li>
+                            <li><a href="/dispositivos/">Série Veículos</a></li>
+                            <li><a href="/dispositivos/">Série Indústria</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Empresa</h3>
+                        <ul>
+                            <li><a href="/sobre/">Sobre Nós</a></li>
+                            <li><a href="/contato/">Contato</a></li>
+                            <li><a href="/trabalhe-conosco/">Trabalhe Conosco</a></li>
+                            <li><a href="/blog-tecnico/">Blog Técnico</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Contato</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-phone"></i> (51) 99239-9960</li>
+                            <li><i class="fas fa-envelope"></i> contato@elevdispositivos.com.br</li>
+                            <li><i class="fas fa-map-marker-alt"></i> RS 342 Km 1 n⁰45 - Bairro Industrial II - Horizontina/RS</li>
+                        </ul>
+                        <div class="social-links">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 ELEV Dispositivos. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/scripts.js"></script>
+    <script src="/dispositivos/dispositivos.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentLocation = window.location.pathname; // Obtém o caminho atual da URL
+        const menuItems = document.querySelectorAll('nav ul li a'); // Seleciona todos os links do menu
+
+        menuItems.forEach(item => {
+            if (item.getAttribute('href') === currentLocation) {
+                item.classList.add('active'); // Adiciona a classe 'active' ao link correspondente
+            }
+        });
+    });
+    </script>
+</body>
+</html>

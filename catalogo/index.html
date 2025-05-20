@@ -1,0 +1,163 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Essencial -->
+    <meta name="description" content="A ELEV Dispositivos oferece soluções robustas para elevação de máquinas agroindustriais, logísticas, construção civil e cargas pesadas, com tecnologia e segurança.">
+    <meta name="keywords" content="elevadores industriais, equipamentos de elevação, soluções agroindustriais, logística, construção civil, cargas pesadas, guindastes, plataformas elevatórias, empilhadeiras, macacos hidráulicos, dispositivo de elevação, macacos de elevação, elevação de cargas, elevação de tratores, elevação de colheitadeiras, soluções de peso para o agro ">
+    <meta name="author" content="ELEV Dispositivos">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.elevdispositivos.com.br/">
+
+    <!-- Open Graph para redes sociais -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ELEV Dispositivos">
+    <meta property="og:title" content="ELEV Dispositivos | Soluções em Elevação para agroindústria, logística e construção civil.">
+    <meta property="og:description" content="Conheça os equipamentos da ELEV Dispositivos para elevação de máquinas e cargas pesadas nos setores agroindustrial, logístico e de construção civil.">
+    <meta property="og:image" content="https://www.elevdispositivos.com.br/midias/og-image.png">
+    <meta property="og:url" content="https://www.elevdispositivos.com.br/">
+
+    <!-- Comentário sobre o desenvolvimento -->
+    <!-- Site desenvolvido por FOSSIO FORCE - https://fossioforce.com.br -->
+    <!-- Desenvolvedor - Fossio -->
+
+    <title>ELEV - Catálogo de Equipamentos</title>
+    <link rel="stylesheet" href="catalogo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../midias/favicon-120x120.png" type="image/png">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com/Fossio-FTG-MCK/elevdispositivos/main/midias/200x60%20elev.png" width="200" height="60" alt="Logo ELEV">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Catálogo</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon">
+                <span class="cart-count">0</span>
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="hero">
+                <h2>Equipamentos de Elevação de Alta Performance</h2>
+                <p>Soluções confiáveis para o agroindustrial moderno</p>
+            </div>
+
+            <div class="catalog-container">
+                <div class="filters">
+                    <div class="filter-section">
+                        <h3>Filtros</h3>
+                        <div class="filter-group">
+                            <label for="search">Buscar</label>
+                            <div class="search-container">
+                                <input type="text" id="search" placeholder="Buscar equipamento...">
+                                <button id="search-btn" class="btn-search"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                        <div class="filter-group">
+                            <label for="categoria">Categoria</label>
+                            <select id="categoria">
+                                <option value="">Todas</option>
+                                <!-- Preenchido via JavaScript -->
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="capacidade">Capacidade</label>
+                            <select id="capacidade">
+                                <option value="">Todas</option>
+                                <!-- Preenchido via JavaScript -->
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="marca">Marca</label>
+                            <select id="marca">
+                                <option value="">Todas</option>
+                                <!-- Preenchido via JavaScript -->
+                            </select>
+                        </div>
+                        <button id="clear-filters" class="btn-clear">Limpar Filtros</button>
+                    </div>
+                </div>
+                
+                <div class="catalog-content">
+                    <div class="sort-section">
+                        <label for="sort">Ordenar por:</label>
+                        <select id="sort">
+                            <option value="nome_asc">Nome (A-Z)</option>
+                            <option value="nome_desc">Nome (Z-A)</option>
+                        </select>
+                    </div>
+                    
+                    <div id="products-grid" class="products-grid">
+                        <!-- Preenchido via JavaScript -->
+                    </div>
+                    
+                    <div class="pagination">
+                        <button id="prev-page" class="btn-page"><i class="fas fa-chevron-left"></i> Anterior</button>
+                        <div id="page-numbers" class="page-numbers">
+                            <!-- Preenchido via JavaScript -->
+                        </div>
+                        <button id="next-page" class="btn-page">Próxima <i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-details" class="modal-details">
+                <!-- Preenchido via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Carrinho de Orçamentos</h3>
+            <span class="close-cart">&times;</span>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <!-- Preenchido via JavaScript -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-form">
+                <label for="quote-name">Nome</label>
+                <input type="text" id="quote-name" placeholder="Seu nome..." required>
+                <label for="quote-phone">Telefone (opcional)</label>
+                <input type="tel" id="quote-phone" placeholder="Seu telefone...">
+                <label for="cart-notes">Mensagem</label>
+                <textarea id="cart-notes" placeholder="Informações adicionais para o orçamento..."></textarea>
+                <button id="submit-quote" class="btn-quote">Solicitar Orçamento</button>
+            </div>
+        </div>
+    </div>
+    <div class="cart-overlay"></div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com/Fossio-FTG-MCK/elevdispositivos/main/midias/200x60%20elev.png" width="200" height="60" alt="Logo ELEV">
+                </div>
+                <div class="footer-info">
+                    <p>FOSSIO FORCE &copy; 2023 ELEV Catálogo. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="catalogo.js"></script>
+</body>
+</html>
